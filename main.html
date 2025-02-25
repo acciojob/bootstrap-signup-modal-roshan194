@@ -10,7 +10,7 @@
 <body>
 
 <!-- Sign Up Button -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
+<button id="openSignupModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
     Sign Up
 </button>
 
@@ -20,32 +20,32 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="signupModalLabel">Create Account</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button id="closeModalBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="signupForm">
                     <!-- Email Field -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                        <input type="email" class="form-control" id="email" placeholder="Enter email" required>
                         <div class="form-text">Your information is safe with us.</div>
                     </div>
                     
                     <!-- Password Field -->
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
                     </div>
 
                     <!-- Confirm Password Field -->
                     <div class="mb-3">
                         <label for="confirmPassword" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="closeFooterBtn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>

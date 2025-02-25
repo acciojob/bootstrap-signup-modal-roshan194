@@ -20,8 +20,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="signupModalLabel">Create Account</h5>
-                <!-- ✅ Updated: Added "close" class for Cypress compatibility -->
-                <button type="button" class="btn-close close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <!-- ✅ FIX: Added unique ID for Cypress -->
+                <button type="button" class="btn-close" id="modalCloseButton" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="signupForm">
@@ -46,8 +46,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <!-- ✅ Updated: Added "close" class for Cypress compatibility -->
-                <button type="button" class="btn btn-secondary close" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>

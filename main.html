@@ -20,6 +20,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Create Account</h5>
+                <!-- Fix: Use btn-close instead of close -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -62,7 +63,7 @@
             modalInstance.hide();
         });
 
-        // Listen for modal hidden event and set `aria-hidden` for Cypress test
+        // Ensure Cypress can detect when the modal is hidden
         signupModal.addEventListener("hidden.bs.modal", function () {
             signupModal.setAttribute("aria-hidden", "true");
         });

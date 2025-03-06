@@ -1,1 +1,5 @@
 /*  your css code here. If applicable */
+.modal.fade {
+    transition: none !important;
+    animation: none !important;
+}

@@ -10,25 +10,23 @@
 <body>
 
 <!-- Sign Up Button -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
+<button type="button" class="btn btn-primary" id="openModal">
     Sign Up
 </button>
 
-<!-- Signup Modal -->
-<div class="modal fade" id="signupModal" tabindex="-1" aria-hidden="true">
+<!-- Signup Modal (No Fade) -->
+<div class="modal show" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Create Account</h5>
-                <!-- Fix: Use btn-close instead of close -->
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="signupModalLabel">Create Account</h5>
+                <button type="button" class="btn-close" id="closeModal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="email" placeholder="Enter email">
-                        <small class="form-text text-muted">Your information is safe with us.</small>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
@@ -41,7 +39,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" id="closeFooter">Close</button>
                 <button type="button" class="btn btn-primary">Submit</button>
             </div>
         </div>
@@ -53,23 +51,23 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const signupModal = document.getElementById("signupModal");
-        const modalInstance = new bootstrap.Modal(signupModal);
-        
-        document.querySelector("button[data-bs-target='#signupModal']").addEventListener("click", function () {
-            modalInstance.show();
+
+        // Show modal on button click
+        document.getElementById("openModal").addEventListener("click", function () {
+            signupModal.style.display = "block";
+            signupModal.setAttribute("aria-hidden", "false");
         });
 
-        document.querySelector(".btn-close").addEventListener("click", function () {
-            modalInstance.hide();
-        });
-
-        // Ensure Cypress can detect when the modal is hidden
-        signupModal.addEventListener("hidden.bs.modal", function () {
+        // Close modal on close button click
+        document.getElementById("closeModal").addEventListener("click", function () {
+            signupModal.style.display = "none";
             signupModal.setAttribute("aria-hidden", "true");
         });
 
-        signupModal.addEventListener("shown.bs.modal", function () {
-            signupModal.setAttribute("aria-hidden", "false");
+        // Close modal when clicking footer close button
+        document.getElementById("closeFooter").addEventListener("click", function () {
+            signupModal.style.display = "none";
+            signupModal.setAttribute("aria-hidden", "true");
         });
     });
 </script>

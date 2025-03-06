@@ -48,29 +48,29 @@
 
 <!-- Bootstrap & Custom Script -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+	<script>
     document.addEventListener("DOMContentLoaded", function () {
-        const signupModal = document.getElementById("signupModal");
+        // Select modal and close button
+        const modal = document.getElementById("signupModal");
+        const closeButton = document.querySelector(".btn-close");
+        const modalInstance = new bootstrap.Modal(modal); // Bootstrap modal instance
 
-        // Show modal on button click
-        document.getElementById("openModal").addEventListener("click", function () {
-            signupModal.style.display = "block";
-            signupModal.setAttribute("aria-hidden", "false");
+        // Ensure modal closes properly when the close button is clicked
+        closeButton.addEventListener("click", function () {
+            modalInstance.hide(); // Hide modal using Bootstrap's method
         });
 
-        // Close modal on close button click
-        document.getElementById("closeModal").addEventListener("click", function () {
-            signupModal.style.display = "none";
-            signupModal.setAttribute("aria-hidden", "true");
+        // Ensure Cypress can detect modal visibility change
+        modal.addEventListener("hidden.bs.modal", function () {
+            modal.setAttribute("aria-hidden", "true");
         });
 
-        // Close modal when clicking footer close button
-        document.getElementById("closeFooter").addEventListener("click", function () {
-            signupModal.style.display = "none";
-            signupModal.setAttribute("aria-hidden", "true");
+        modal.addEventListener("shown.bs.modal", function () {
+            modal.setAttribute("aria-hidden", "false");
         });
     });
 </script>
+
 
 </body>
 </html>
